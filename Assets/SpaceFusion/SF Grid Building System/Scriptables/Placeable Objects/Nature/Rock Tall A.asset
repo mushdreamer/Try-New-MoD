@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220f42fd2be8412088d96b73d9d10822, type: 3}
+  m_Name: Rock Tall A
+  m_EditorClassIdentifier: 
+  <Size>k__BackingField: {x: 0.983069, y: 0.683211}
+  <Prefab>k__BackingField: {fileID: 6282853113394624551, guid: 9fde301f4285e9f4eb15450d70b16ae4, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 10a958662bc73a34585a22b53820ba54, type: 3}
+  <GridType>k__BackingField: 0
+  <ObjectGroupInfo>k__BackingField: 2

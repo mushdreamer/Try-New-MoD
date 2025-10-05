@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220f42fd2be8412088d96b73d9d10822, type: 3}
+  m_Name: Tree Thin Fall
+  m_EditorClassIdentifier: 
+  <Size>k__BackingField: {x: 0.680436, y: 0.616522}
+  <Prefab>k__BackingField: {fileID: 121951313957151899, guid: d315009b7b04cdf40b0da90efc86af94, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 0d39f42ad39afea48a0b697f87a2d770, type: 3}
+  <GridType>k__BackingField: 0
+  <ObjectGroupInfo>k__BackingField: 2

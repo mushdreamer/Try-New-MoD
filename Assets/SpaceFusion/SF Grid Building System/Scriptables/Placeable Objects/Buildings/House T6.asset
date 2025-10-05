@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220f42fd2be8412088d96b73d9d10822, type: 3}
+  m_Name: House T6
+  m_EditorClassIdentifier: 
+  <Size>k__BackingField: {x: 1.3, y: 1.316276}
+  <Prefab>k__BackingField: {fileID: 8452252071247662662, guid: c1c1428e5b328634dbc65992d15a61a8, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 4e5331aaa031db3439a7ea938608f0eb, type: 3}
+  <GridType>k__BackingField: 0
+  <ObjectGroupInfo>k__BackingField: 0

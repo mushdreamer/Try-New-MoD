@@ -575,7 +575,7 @@ PrefabInstance:
       objectReference: {fileID: 901316464}
     - target: {fileID: 133086093506365123, guid: ce4c09535dc998344a8fb075b3e5a3c4, type: 3}
       propertyPath: <SaveFileName>k__BackingField
-      value: NewFile
+      value: SaveFile
       objectReference: {fileID: 0}
     - target: {fileID: 133086093506365123, guid: ce4c09535dc998344a8fb075b3e5a3c4, type: 3}
       propertyPath: <EnableSaveSystem>k__BackingField

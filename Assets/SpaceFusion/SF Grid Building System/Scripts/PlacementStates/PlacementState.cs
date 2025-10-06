@@ -5,6 +5,7 @@ using SpaceFusion.SF_Grid_Building_System.Scripts.Enums;
 using SpaceFusion.SF_Grid_Building_System.Scripts.Interfaces;
 using SpaceFusion.SF_Grid_Building_System.Scripts.Scriptables;
 using SpaceFusion.SF_Grid_Building_System.Scripts.Utils;
+using SpaceFusion.SF_Grid_Building_System.Scripts.Managers;
 using UnityEngine;
 
 namespace SpaceFusion.SF_Grid_Building_System.Scripts.PlacementStates {
@@ -53,6 +54,16 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.PlacementStates {
                 // wrong placement
                 return;
             }
+
+            // --- MODIFICATION START ---
+            // 检查是否有足够的钱
+            if (!ResourceManager.Instance.SpendMoney(_selectedObject.Cost))
+            {
+                Debug.Log("金钱不足!");
+                // 这里可以添加一个UI提示告诉玩家钱不够
+                return;
+            }
+            // --- MODIFICATION END ---
 
             var worldPosition = _grid.CellToWorld(gridPosition);
             var guid = _placementHandler.PlaceObject(_selectedObject, worldPosition, gridPosition, _currentDirection, _placeablePivotOffset, _grid.CellSize);

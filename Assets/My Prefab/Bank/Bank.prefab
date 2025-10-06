@@ -26,15 +26,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 83fe0e970e1d8b3489f1eeb8784a6179, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.71633
+      value: 467.27756
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 83fe0e970e1d8b3489f1eeb8784a6179, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.06592
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 83fe0e970e1d8b3489f1eeb8784a6179, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.76347
+      value: 985.85596
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 83fe0e970e1d8b3489f1eeb8784a6179, type: 3}
       propertyPath: m_LocalRotation.w
@@ -83,6 +83,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 83fe0e970e1d8b3489f1eeb8784a6179, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6741201826450110458}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 83fe0e970e1d8b3489f1eeb8784a6179, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2568755424646171268}
   m_SourcePrefab: {fileID: 100100000, guid: 83fe0e970e1d8b3489f1eeb8784a6179, type: 3}
 --- !u!1 &3186172402005991606 stripped
 GameObject:
@@ -110,3 +113,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 6.2325, y: 7.7106547, z: 7.7754292}
   m_Center: {x: 0, y: 3.777993, z: 0.00000071525574}
+--- !u!114 &2568755424646171268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3186172402005991606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8491c1e2af13d64cb78d494507aa9ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpaceFusion.SF_Grid_Building_System.Scripts.Core.BuildingEffect
+  type: 4
+  populationCapacityIncrease: 5
+  foodProduction: 2
+  workersRequired: 2

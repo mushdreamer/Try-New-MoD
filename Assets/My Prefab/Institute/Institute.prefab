@@ -26,15 +26,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f32d495aafb961349be7f5ef4e3a0b74, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.4799999
+      value: 467.20386
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f32d495aafb961349be7f5ef4e3a0b74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.04731345
+      value: 0.24603
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f32d495aafb961349be7f5ef4e3a0b74, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.98
+      value: 984.4768
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f32d495aafb961349be7f5ef4e3a0b74, type: 3}
       propertyPath: m_LocalRotation.w
@@ -83,6 +83,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f32d495aafb961349be7f5ef4e3a0b74, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6973079328714639562}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f32d495aafb961349be7f5ef4e3a0b74, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7351346969236906875}
   m_SourcePrefab: {fileID: 100100000, guid: f32d495aafb961349be7f5ef4e3a0b74, type: 3}
 --- !u!1 &2706902175044359165 stripped
 GameObject:
@@ -110,3 +113,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 13.3773575, y: 11.109852, z: 13.298883}
   m_Center: {x: -0.0000052452087, y: 5.5056124, z: 0.00000071525574}
+--- !u!114 &7351346969236906875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2706902175044359165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8491c1e2af13d64cb78d494507aa9ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpaceFusion.SF_Grid_Building_System.Scripts.Core.BuildingEffect
+  type: 2
+  populationCapacityIncrease: 5
+  foodProduction: 2
+  workersRequired: 2

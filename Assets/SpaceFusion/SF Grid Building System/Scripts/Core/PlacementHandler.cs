@@ -37,6 +37,12 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.Core {
 
             ObjectGrouper.Instance.AddToGroup(obj, placeableObj.GridType);
             _placedObjectDictionary.Add(placedObject.data.guid, obj);
+
+            // --- ADD THIS ---
+            // 放置后应用建筑效果
+            obj.GetComponent<BuildingEffect>()?.ApplyEffect();
+            // --- END ADD ---
+
             return placedObject.data.guid;
         }
 
@@ -61,6 +67,12 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.Core {
 
             _placedObjectDictionary.Add(placedObject.data.guid, obj);
             ObjectGrouper.Instance.AddToGroup(obj, placeableObj.GridType);
+
+            // --- ADD THIS ---
+            // 加载的物体也需要应用效果
+            obj.GetComponent<BuildingEffect>()?.ApplyEffect();
+            // --- END ADD ---
+
             return podata.guid;
         }
 
@@ -87,6 +99,11 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.Core {
                 Debug.LogError($"Removing object error: {guid} is not saved in dictionary");
                 return;
             }
+
+            // --- ADD THIS ---
+            // 移除前移除建筑效果
+            obj.GetComponent<BuildingEffect>()?.RemoveEffect();
+            // --- END ADD ---
 
             obj.GetComponent<PlacedObject>().RemoveFromSaveData();
             _placedObjectDictionary.Remove(guid);

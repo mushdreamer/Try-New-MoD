@@ -212,15 +212,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 33df380a3286ca94fb91a96dfd2d4882, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.45037
+      value: 467.23593
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 33df380a3286ca94fb91a96dfd2d4882, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.027371
+      value: 0.13901
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 33df380a3286ca94fb91a96dfd2d4882, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.0659
+      value: 985.0768
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 33df380a3286ca94fb91a96dfd2d4882, type: 3}
       propertyPath: m_LocalRotation.w
@@ -299,6 +299,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 33df380a3286ca94fb91a96dfd2d4882, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7010984861819941694}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 33df380a3286ca94fb91a96dfd2d4882, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5103601423301959495}
   m_SourcePrefab: {fileID: 100100000, guid: 33df380a3286ca94fb91a96dfd2d4882, type: 3}
 --- !u!1 &1317920134518363058 stripped
 GameObject:
@@ -326,6 +329,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 8, y: 1.233398, z: 8.000002}
   m_Center: {x: 0, y: 0.42232966, z: 0.0000009536743}
+--- !u!114 &5103601423301959495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317920134518363058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8491c1e2af13d64cb78d494507aa9ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpaceFusion.SF_Grid_Building_System.Scripts.Core.BuildingEffect
+  type: 1
+  populationCapacityIncrease: 5
+  foodProduction: 2
+  workersRequired: 2
 --- !u!4 &1801969599445272840 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 33df380a3286ca94fb91a96dfd2d4882, type: 3}

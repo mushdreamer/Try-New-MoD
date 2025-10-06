@@ -12,6 +12,10 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.UI {
         [SerializeField]
         private Button removeButton;
 
+        [Header("Institute Buttons")] // <<< --- 新增按钮引用 ---
+        [SerializeField]
+        private Button researchButton;
+
         [SerializeField]
         private GameObject tooltipUI;
 
@@ -36,6 +40,7 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.UI {
                 _tooltipSize = GetComponent<RectTransform>().sizeDelta;
                 moveButton.onClick.AddListener(MoveObject);
                 removeButton.onClick.AddListener(RemoveObject);
+                researchButton.onClick.AddListener(FundResearch); // <<< --- 绑定新按钮的事件 ---
                 tooltipUI.gameObject.SetActive(false);
             }
         }
@@ -59,6 +64,15 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.UI {
 
         private void Show(PlacedObject caller) {
             _placedObject = caller;
+            // --- 核心修改：根据建筑类型显示不同按钮 ---
+            var buildingType = _placedObject.buildingEffect.type;
+
+            moveButton.gameObject.SetActive(true);
+            removeButton.gameObject.SetActive(true); // 移除按钮始终显示
+
+            //Only Show when Institute is Selected
+            researchButton.gameObject.SetActive(buildingType == BuildingType.Institute);
+            // --- 修改结束 ---
             var screenPosition = _targetCamera.WorldToScreenPoint(caller.transform.position);
             tooltipUI.gameObject.SetActive(true);
             tooltipUI.transform.position = RecalculatePositionWithinBounds(screenPosition);
@@ -99,6 +113,11 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.UI {
         private void HideTooltip() {
             tooltipUI.gameObject.SetActive(false);
             blockerUI.SetActive(false);
+        }
+        private void FundResearch() // <<< --- 新增方法 ---
+        {
+            ResourceManager.Instance.FundResearch();
+            HideTooltip(); // 执行操作后关闭菜单
         }
 
         private static void ShowTooltip(PlacedObject caller) {

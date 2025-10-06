@@ -25,6 +25,8 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.Core {
         public static Action<PlacedObject> holdComplete;
         public Placeable placeable;
 
+        public BuildingEffect buildingEffect; // <<< --- 在这里添加新的一行 ---
+
         private Vector3 _lastMousePosition;
         private Camera _sceneCamera;
 

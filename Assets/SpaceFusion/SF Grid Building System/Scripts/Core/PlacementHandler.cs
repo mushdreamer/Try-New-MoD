@@ -26,6 +26,7 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.Core {
             var obj = Instantiate(placeableObj.Prefab);
             obj.AddComponent<PlacedObject>();
             var placedObject = obj.GetComponent<PlacedObject>();
+            placedObject.buildingEffect = obj.GetComponent<BuildingEffect>(); // <<< --- 添加这行 ---
             placedObject.Initialize(placeableObj, gridPosition);
             placedObject.data.direction = direction;
 
@@ -54,6 +55,7 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.Core {
             var obj = Instantiate(placeableObj.Prefab);
             obj.AddComponent<PlacedObject>();
             var placedObject = obj.GetComponent<PlacedObject>();
+            placedObject.buildingEffect = obj.GetComponent<BuildingEffect>(); // <<< --- 添加这行 ---
             placedObject.data.gridPosition = podata.gridPosition;
             placedObject.placeable = placeableObj;
             placedObject.Initialize(podata);

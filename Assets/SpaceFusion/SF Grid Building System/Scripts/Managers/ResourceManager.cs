@@ -23,11 +23,17 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.Managers
         private int _employedPopulation;
         private float _food;
         private float _foodProductionRate; // 每秒生产的食物
+        private float _baseElectricityProduction;      // <<< --- 修改: 电力基础产量 ---
         private float _electricityProduction;
         private float _happiness;
+        private float _baseCarbonDioxideEmission;      // <<< --- 修改: 二氧化碳基础排放量 ---
         private float _carbonDioxideEmission;
         private float _airQuality;
         private bool _bankExists = false;
+
+        // --- 新增科研相关变量 ---
+        private float _powerEfficiencyModifier = 1.0f; // 电力效率修正，初始为100%
+        private float _co2EmissionModifier = 1.0f;     // 碳排放修正，初始为100%
 
         // --- 游戏平衡性参数 (可以在编辑器中调整) ---
         [Header("Game Balance Settings")]
@@ -43,6 +49,11 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.Managers
         public float happinessChangeRate = 1f;    // 幸福度每秒变化的点数
         public float airQualityRecoveryRate = 0.1f; // 空气质量每秒自然恢复的点数
         public float airQualityDeclineRate = 0.2f;  // 每单位二氧化碳排放导致空气质量下降的速率
+
+        [Header("Institute Settings")] // <<< --- 新增参数组 ---
+        public float researchCost = 100f; // 每次科研投入的成本
+        public float powerEfficiencyGain = 0.1f; // 每次科研提升的发电效率 (10%)
+        public float co2EmissionReduction = 0.1f; // 每次科研降低的碳排放 (10%)
 
         private float _populationGrowthProgress = 0f;
         private float _populationDecreaseProgress = 0f;
@@ -75,6 +86,10 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.Managers
         // 每秒执行一次的核心游戏逻辑
         private void Tick()
         {
+            // --- 重新计算应用增益后的总产量/排放 ---
+            _electricityProduction = _baseElectricityProduction * _powerEfficiencyModifier;
+            _carbonDioxideEmission = _baseCarbonDioxideEmission * _co2EmissionModifier;
+
             // 1. 生产食物
             _food += _foodProductionRate;
 
@@ -234,18 +249,38 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.Managers
         // --- 新增公共方法 ---
         public void AddPowerPlantEffect(float electricity, float co2)
         {
-            _electricityProduction += electricity;
-            _carbonDioxideEmission += co2;
+            _baseElectricityProduction += electricity;
+            _baseCarbonDioxideEmission += co2;
             UpdateUI();
         }
 
         public void RemovePowerPlantEffect(float electricity, float co2)
         {
-            _electricityProduction -= electricity;
-            _carbonDioxideEmission -= co2;
+            _baseElectricityProduction -= electricity;
+            _baseCarbonDioxideEmission -= co2;
             if (_electricityProduction < 0) _electricityProduction = 0;
             if (_carbonDioxideEmission < 0) _carbonDioxideEmission = 0;
             UpdateUI();
+        }
+        public void FundResearch()
+        {
+            if (SpendMoney(researchCost))
+            {
+                // 科研成功，应用增益
+                _powerEfficiencyModifier += powerEfficiencyGain;
+                _co2EmissionModifier -= co2EmissionReduction;
+
+                // 确保排放修正不会低于0
+                if (_co2EmissionModifier < 0) _co2EmissionModifier = 0;
+
+                Debug.Log($"Research Succeed! Current Power Efficient: {_powerEfficiencyModifier * 100:F0}%, Co2 Emission: {_co2EmissionModifier * 100:F0}%");
+                UpdateUI();
+            }
+            else
+            {
+                Debug.Log("Not Enough Funding for Research!");
+                // 可以在此添加UI提示
+            }
         }
 
         public void SetBankStatus(bool exists)

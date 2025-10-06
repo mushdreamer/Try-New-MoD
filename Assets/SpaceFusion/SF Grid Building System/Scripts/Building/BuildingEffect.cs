@@ -19,7 +19,7 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.Core
 
         [Header("PowerPlant Settings")]
         public float electricityProduction = 10f; // 每秒发电量
-        public float co2Emission = 1f;            // 每秒二氧化碳排放量
+        public float co2Emission = 2f;            // 每秒二氧化碳排放量
 
         // 当建筑被成功放置时调用
         public void ApplyEffect()

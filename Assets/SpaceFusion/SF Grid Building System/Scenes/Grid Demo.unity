@@ -586,7 +586,7 @@ MonoBehaviour:
   foodConsumptionPerPerson: 0.1
   populationGrowthRate: 0.5
   moneyMultiplierFromFood: 0.5
-  electricityPerPerson: 0.2
+  electricityPerPerson: 1
   happinessChangeRate: 1
   airQualityRecoveryRate: 0.1
   airQualityDeclineRate: 0.2

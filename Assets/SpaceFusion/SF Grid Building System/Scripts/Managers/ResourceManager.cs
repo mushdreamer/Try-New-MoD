@@ -11,6 +11,9 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.Managers
         public TextMeshProUGUI moneyText;
         public TextMeshProUGUI populationText;
         public TextMeshProUGUI foodText;
+        public TextMeshProUGUI electricityText;
+        public TextMeshProUGUI happinessText;
+        public TextMeshProUGUI airQualityText;
 
         // --- 核心全局变量 ---
         private float _money;
@@ -20,6 +23,10 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.Managers
         private int _employedPopulation;
         private float _food;
         private float _foodProductionRate; // 每秒生产的食物
+        private float _electricityProduction;
+        private float _happiness;
+        private float _carbonDioxideEmission;
+        private float _airQuality;
         private bool _bankExists = false;
 
         // --- 游戏平衡性参数 (可以在编辑器中调整) ---
@@ -30,6 +37,12 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.Managers
         public float foodConsumptionPerPerson = 0.1f; // 每人每秒消耗的食物
         public float populationGrowthRate = 0.5f; // 当食物充足时，每秒人口增长的点数
         public float moneyMultiplierFromFood = 0.5f;
+
+        [Header("Electricity & Environment")] // <<< --- 新增参数组 ---
+        public float electricityPerPerson = 0.2f; // 每人每秒消耗的电力
+        public float happinessChangeRate = 1f;    // 幸福度每秒变化的点数
+        public float airQualityRecoveryRate = 0.1f; // 空气质量每秒自然恢复的点数
+        public float airQualityDeclineRate = 0.2f;  // 每单位二氧化碳排放导致空气质量下降的速率
 
         private float _populationGrowthProgress = 0f;
         private float _populationDecreaseProgress = 0f;
@@ -51,6 +64,8 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.Managers
         {
             _money = startingMoney;
             _populationCapacity = startingPopulationCapacity;
+            _happiness = 100f;
+            _airQuality = 100f;
             UpdateUI();
 
             // 每秒调用一次核心逻辑更新
@@ -108,6 +123,33 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.Managers
                 }
             }
 
+            // 4. 电力计算
+            float electricityConsumed = _currentPopulation * electricityPerPerson;
+
+            // 5. 幸福度计算
+            if (_electricityProduction >= electricityConsumed)
+            {
+                // 电力充足，幸福度缓慢上升
+                _happiness += happinessChangeRate;
+                if (_happiness > 100f) _happiness = 100f;
+            }
+            else
+            {
+                // 电力不足，幸福度缓慢下降
+                _happiness -= happinessChangeRate;
+                if (_happiness < 0f) _happiness = 0f;
+            }
+
+            // 6. 空气质量计算
+            // a. 因排放而下降
+            _airQuality -= _carbonDioxideEmission * airQualityDeclineRate;
+            // b. 自然恢复
+            _airQuality += airQualityRecoveryRate;
+
+            // 确保空气质量在0-100之间
+            _airQuality = Mathf.Clamp(_airQuality, 0f, 100f);
+
+
             UpdateUI();
         }
 
@@ -116,6 +158,10 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.Managers
             moneyText.text = $"Money: {_money:F0}";
             populationText.text = $"Population: {_currentPopulation} / {_populationCapacity}";
             foodText.text = $"Food: {_food:F0}";
+            float electricityBalance = _electricityProduction - (_currentPopulation * electricityPerPerson);
+            electricityText.text = $"Electricity: {electricityBalance:F1}";
+            happinessText.text = $"Happiness: {_happiness:F0}%";
+            airQualityText.text = $"AirQ: {_airQuality:F0}%";
         }
 
         // --- 公共方法，供其他脚本调用 ---
@@ -182,6 +228,23 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.Managers
             _employedPopulation -= workersFreed;
             _foodProductionRate -= amount;
             if (_foodProductionRate < 0) _foodProductionRate = 0;
+            UpdateUI();
+        }
+
+        // --- 新增公共方法 ---
+        public void AddPowerPlantEffect(float electricity, float co2)
+        {
+            _electricityProduction += electricity;
+            _carbonDioxideEmission += co2;
+            UpdateUI();
+        }
+
+        public void RemovePowerPlantEffect(float electricity, float co2)
+        {
+            _electricityProduction -= electricity;
+            _carbonDioxideEmission -= co2;
+            if (_electricityProduction < 0) _electricityProduction = 0;
+            if (_carbonDioxideEmission < 0) _carbonDioxideEmission = 0;
             UpdateUI();
         }
 

@@ -17,6 +17,10 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.Core
         public float foodProduction = 2f; // 每秒生产的食物
         public int workersRequired = 2;   // 需要的工人数量
 
+        [Header("PowerPlant Settings")]
+        public float electricityProduction = 10f; // 每秒发电量
+        public float co2Emission = 1f;            // 每秒二氧化碳排放量
+
         // 当建筑被成功放置时调用
         public void ApplyEffect()
         {
@@ -31,8 +35,10 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.Core
                 case BuildingType.Bank:
                     ResourceManager.Instance.SetBankStatus(true);
                     break;
+                case BuildingType.PowerPlant: // <<< --- 新增case ---
+                    ResourceManager.Instance.AddPowerPlantEffect(electricityProduction, co2Emission);
+                    break;
                 case BuildingType.Institute:
-                case BuildingType.PowerPlant:
                     // 未来迭代的功能
                     break;
             }
@@ -54,8 +60,10 @@ namespace SpaceFusion.SF_Grid_Building_System.Scripts.Core
                     // 为简化，我们假设只有一个银行。如果最后一个银行被拆除，则停止加钱。
                     ResourceManager.Instance.SetBankStatus(false);
                     break;
+                case BuildingType.PowerPlant: // <<< --- 新增case ---
+                    ResourceManager.Instance.RemovePowerPlantEffect(electricityProduction, co2Emission);
+                    break;
                 case BuildingType.Institute:
-                case BuildingType.PowerPlant:
                     break;
             }
         }

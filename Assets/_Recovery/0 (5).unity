@@ -14593,7 +14593,7 @@ MonoBehaviour:
     requireCo2WithinLimit: 0
     requireCo2OverLimit: 0
   - stepName: "Event 3.2: Requirement 1 \u2014 Meeting Food Demand"
-    instructionText: Observe the Food Demand. Add restaurants to meet the food demand.
+    instructionText: Observe the Food Demand. Add a restaurant to meet the food demand.
       The trade-off is that producing food costs money and consumes power.
     setSpecificMoney: 0
     moneyAmount: 1000
@@ -14657,7 +14657,7 @@ MonoBehaviour:
     requireCo2WithinLimit: 0
     requireCo2OverLimit: 0
   - stepName: "Event 3.3: Requirement 2 \u2014 Satisfying Electric Demand"
-    instructionText: Observe the Electric Demand bar. Add powerplants or local generation
+    instructionText: Observe the Electric Demand bar. Add a powerplant or local generation
       to meet the electric demand. Balancing energy is necessary, but increased generation
       raises CO2 levels.
     setSpecificMoney: 0
@@ -14722,9 +14722,8 @@ MonoBehaviour:
     requireCo2WithinLimit: 0
     requireCo2OverLimit: 0
   - stepName: "Event 3.4: Requirement 3 \u2014 The CO2 Limit"
-    instructionText: Observe the CO2 Emission. Add the Co2 Storage buildings to lower
-      Co2 Emission. Factors in the cost of Co2 Storage facilities to lower the Co2
-      Level.
+    instructionText: Observe the CO2 Emission. Add the CCUS building to lower Co2
+      Emission. Factors in the cost of Co2 Storage facilities to lower the Co2 Level.
     setSpecificMoney: 0
     moneyAmount: 1000
     showFormulaPanel: 0
@@ -15580,8 +15579,8 @@ MonoBehaviour:
       construct as many powerplant as you can to boost our power supply.
 
 
-      <color="red">Tip:
-      If you feel stuck, click Next to proceed.</color>'
+      Tip:
+      If you feel stuck, click Next to proceed.'
     setSpecificMoney: 1
     moneyAmount: 3000
     showFormulaPanel: 0
